@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "django-fsm-enhanced"
+version = "0.1.0"
+description = "Wraps django-fsm to provide some enhancements"
+authors = ["Andrew Ingram <andy@andrewingram.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Django = ">=2.2"
+django-fsm = "^2.7.1"
+typing_extensions = "^3.7.4"
+
+[tool.poetry.dev-dependencies]
+black = "^21.7b0"
+pytest = "^6.2.4"
+pytest-django = "^4.4.0"
+mypy = "^0.910"
+flake8 = "^3.9.2"
+flake8-black = "^0.2.3"
+flake8-isort = "^4.0.0"
+isort = "^5.9.3"
+pdbpp = "^0.10.3"
+pudb = "^2021.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+src_paths = ["django_fsm_enhanced", "examples"]
+profile = "black"
+indent = 4
+combine_star = true
+combine_as_imports = true
+lines_after_imports = 2
+known_django = ["django"]
+known_django_ecosystem = ["django_fsm"]
+known_pytest = ["pytest"]
+known_first_party = ["django_fsm_enhanced"]
+sections = ["FUTURE", "STDLIB", "PYTEST", "THIRDPARTY", "DJANGO", "DJANGO_ECOSYSTEM", "FIRSTPARTY", "LOCALFOLDER"]
+
+[[tool.mypy.overrides]]
+module = [
+    "django.*",
+    "django_fsm.*"
+]
+ignore_missing_imports = true
